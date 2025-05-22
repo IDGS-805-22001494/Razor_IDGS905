@@ -1,0 +1,50 @@
+﻿@page
+@model ejercicioRAZOR.Pages.EstadisticasModel
+@{
+    ViewData["Title"] = "Estadísticas de Números Aleatorios";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h2 class="mb-0">Generador de estadísticas de 20 números aleatorios</h2>
+        </div>
+        <div class="card-body text-center">
+            <form method="post">
+                <button type="submit" class="btn btn-primary btn-lg">Generar Números</button>
+            </form>
+        </div>
+    </div>
+
+    @if (Model.NumerosAleatorios.Length > 0)
+    {
+        <div class="card mt-4 shadow">
+            <div class="card-body">
+                <h4 class="text-primary">Resultados:</h4>
+
+                <div class="mb-3">
+                    <strong>Arreglo Aleatorio:</strong>
+                    <p class="bg-light p-2 rounded border">@string.Join(", ", Model.NumerosAleatorios)</p>
+                </div>
+
+                <div class="mb-3">
+                    <strong>Arreglo Ordenado:</strong>
+                    <p class="bg-light p-2 rounded border">@string.Join(", ", Model.NumerosOrdenados)</p>
+                </div>
+
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <p><strong>Suma:</strong> @Model.Suma</p>
+                        <p><strong>Promedio:</strong> @Model.Promedio.ToString("0.00")</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Moda:</strong> @string.Join(" y ", Model.Moda)</p>
+                        <p><strong>Mediana:</strong> @Model.Mediana.ToString("0.00")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

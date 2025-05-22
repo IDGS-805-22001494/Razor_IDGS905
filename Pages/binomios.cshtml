@@ -1,0 +1,59 @@
+﻿@page
+@model ejercicioRAZOR.Pages.binomiosModel
+@{
+    ViewData["Title"] = "Evaluar Binomios";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card ">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Evaluar expresiones de binomios</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="row g-3">
+                <div class="col-md-6">
+                    <label for="a" class="form-label">Valor de a</label>
+                    <input type="number" step="any" class="form-control" name="a" id="a" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="b" class="form-label">Valor de b</label>
+                    <input type="number" step="any" class="form-control" name="b" id="b" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="x" class="form-label">Valor de x</label>
+                    <input type="number" step="any" class="form-control" name="x" id="x" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="y" class="form-label">Valor de y</label>
+                    <input type="number" step="any" class="form-control" name="y" id="y" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="n" class="form-label">Potencia n</label>
+                    <input type="number" class="form-control" name="n" id="n" required />
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Calcular</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (Model.Resultado != null)
+    {
+        <div class="card mt-4 shadow">
+            <div class="card-body">
+                <h4 class="text-success">Resultado: <strong>@Model.Resultado</strong></h4>
+
+                <h5 class="mt-4">Desarrollo paso a paso:</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var paso in Model.Pasos)
+                    {
+                        <li class="list-group-item">@paso</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>
